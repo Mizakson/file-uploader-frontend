@@ -6,22 +6,23 @@ import '../src/css/index.css'
 import Homepage from './pages/Homepage.jsx'
 import SignUp from './pages/SignUp.jsx'
 import Login from './pages/Login.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
-    errorElement: <div>There has been an error :(</div>
+    errorElement: <ErrorPage />
   },
   {
     path: "/sign-up",
     element: <SignUp />,
-    errorElement: <div>There has been an error :(</div>
+    errorElement: <ErrorPage />
   },
   {
     path: "/login",
     element: <Login />,
-    errorElement: <div>There has been an error :(</div>
+    errorElement: <ErrorPage />
   },
 ])
 
