@@ -109,7 +109,7 @@ describe('Sign Up component submission and navigation test', () => {
                 expect.objectContaining({
                     method: 'POST',
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username: 'TestUser', password: 'password123' })
+                    body: JSON.stringify({ username: 'TestUser', password: 'password123', confirmPassword: 'password123' })
                 })
             )
         })
