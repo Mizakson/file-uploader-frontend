@@ -8,9 +8,9 @@ import { AuthProvider } from './contexts/AuthContext.jsx'
 import Homepage from './pages/Homepage.jsx'
 import SignUp from './pages/SignUp.jsx'
 import Login from './pages/Login.jsx'
-// import Profile from './pages/Profile.jsx'
+import Profile from './pages/Profile.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
-// import ProtectedRoute from './components/ProtectedRoute.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,9 +28,8 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <ErrorPage />
   },
-  /* 
   {
-    element: <ProtectedRoute />, 
+    element: <ProtectedRoute />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -38,8 +37,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       }
     ]
-  }
-  */
+  },
 ])
 
 createRoot(document.getElementById('root')).render(
