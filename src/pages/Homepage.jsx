@@ -1,7 +1,21 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 function Homepage() {
+    const { user, loading } = useAuth()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!loading && user) {
+            navigate('/profile', { replace: true })
+        }
+    }, [user, loading, navigate])
+
+    if (loading) {
+        return <div className='homepage-container'>Checking session...</div>
+    }
     return (
         <div className='homepage-container'>
             <h1 className='title-text' id='hompage-title-text'>File Uploader</h1>
