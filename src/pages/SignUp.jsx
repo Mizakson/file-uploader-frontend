@@ -33,19 +33,28 @@ function SignUp() {
             const response = await fetch(`${API_URL}/api/user/sign-up`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username: username, password: password })
+                body: JSON.stringify({ username: username, password: password, confirmPassword: confirmPassword })
             })
 
             if (!response.ok) {
-                throw new Error(`HTTP Error, status: ${response.status}`)
+                let errorData
+                try {
+                    errorData = await response.json();
+                } catch (e) {
+                    console.error(`Failed to parse error response body (Status ${response.status}): `, e);
+                    throw new Error(`HTTP Error, status: ${response.status}`);
+                }
+
+                const serverErrorMessage = errorData.message || errorData.error || `HTTP Error, status: ${response.status}`;
+                throw new Error(serverErrorMessage);
             }
 
-            const repsonseData = await response.json()
-            console.log("User created: ", repsonseData)
+            const responseData = await response.json()
+            console.log("User created: ", responseData)
 
             navigate("/login")
         } catch (err) {
-            console.error("Submission failed")
+            console.error("Submission failed", err.message)
             setError(err.message)
         } finally {
             setLoading(false)
