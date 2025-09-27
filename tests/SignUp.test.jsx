@@ -60,3 +60,62 @@ describe('Sign up component password validation tests', () => {
         expect(screen.getByText(/Password length must be at least 6 characters./i)).toBeInTheDocument()
     })
 })
+
+// mocks for submission and navigation test
+
+// use fake api url for tests
+import.meta.env.VITE_API_URL = 'http://test-api.com'
+
+global.fetch = vi.fn(() =>
+    Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ message: 'User created' }),
+    })
+)
+
+const mockNavigate = vi.fn()
+vi.mock('react-router-dom', async (importOriginal) => {
+    const actual = await importOriginal()
+    return {
+        ...actual,
+        useNavigate: () => mockNavigate
+    }
+})
+
+
+describe('Sign Up component submission and navigation test', () => {
+    let user
+
+    beforeEach(() => {
+        setupRender()
+        user = userEvent.setup()
+    })
+
+    it('should submit form successfully and navigate to login page', async () => {
+        const usernameInput = screen.getByLabelText("Username:");
+        const passwordInput = screen.getByLabelText("Password:");
+        const confirmPasswordInput = screen.getByLabelText("Confirm Password:");
+        const signUpButton = screen.getByRole('button', { name: /Sign Up/i });
+
+        await user.type(usernameInput, 'TestUser')
+        await user.type(passwordInput, 'password123')
+        await user.type(confirmPasswordInput, 'password123')
+
+        await user.click(signUpButton)
+
+        await vi.waitFor(() => {
+            expect(global.fetch).toHaveBeenCalledWith(
+                `${import.meta.env.VITE_API_URL}/api/user/sign-up`,
+                expect.objectContaining({
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: 'TestUser', password: 'password123' })
+                })
+            )
+        })
+
+        await vi.waitFor(() => {
+            expect(mockNavigate).toHaveBeenCalledWith('/login')
+        })
+    })
+})
