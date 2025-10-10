@@ -15,20 +15,32 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const checkSession = async () => {
-            try {
-                const response = await fetch(`${API_URL}/api/current-user`)
 
-                if (response.ok) {
+            if (localStorage.getItem('token')) {
+                try {
+                    const response = await fetch(`${API_URL}/api/current-user`, {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        }
+                    })
+
+                    if (!response.ok) {
+                        console.log(response.status)
+                    }
+
                     const userData = await response.json()
                     setUser(userData.user)
-                    console.log(userData)
+                } catch (err) {
+                    console.error("Session check failed: ", err)
+                    setUser(null)
+                } finally {
+                    setLoading(false)
                 }
-            } catch (err) {
-                console.error("Session check failed: ", err)
-                setUser(null)
-            } finally {
-                setLoading(false)
+            } else {
+
             }
+
+
         }
 
         checkSession()
