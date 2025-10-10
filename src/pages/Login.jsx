@@ -42,6 +42,9 @@ function Login() {
             const responseData = await response.json()
             console.log("User logged in: ", responseData)
 
+            const rawToken = JSON.stringify(responseData.token).split(' ')[1]
+
+            localStorage.setItem('token', rawToken)
             login(responseData.user)
 
             // maybe dynamic routing with id?

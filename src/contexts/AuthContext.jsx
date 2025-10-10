@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
                 if (response.ok) {
                     const userData = await response.json()
                     setUser(userData.user)
+                    console.log(userData)
                 }
             } catch (err) {
                 console.error("Session check failed: ", err)
