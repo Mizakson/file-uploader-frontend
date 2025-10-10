@@ -19,8 +19,11 @@ function Login() {
         setError(null)
         setLoading(true)
 
+        let response
+        let responseData
+
         try {
-            const response = await fetch(`${API_URL}/api/login`, {
+            response = await fetch(`${API_URL}/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username: username, password: password })
@@ -39,16 +42,16 @@ function Login() {
                 throw new Error(serverErrorMessage);
             }
 
-            const responseData = await response.json()
+            responseData = await response.json()
             console.log("User logged in: ", responseData)
+            const tokenString = responseData.token
 
-            const rawToken = JSON.stringify(responseData.token).split(' ')[1]
+            const cleanToken = tokenString.replace('Bearer ', '').trim()
 
-            localStorage.setItem('token', rawToken)
+            localStorage.setItem('token', cleanToken)
             login(responseData.user)
 
-            // maybe dynamic routing with id?
-            navigate("/profile")
+            navigate("/")
         } catch (err) {
             console.error("Login failed", err.message)
             setError(err.message)
