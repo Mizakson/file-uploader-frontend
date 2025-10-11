@@ -14,7 +14,6 @@ const AppRouter = () => {
         )
     }
 
-    // 2. Conditional Rendering: If user is authenticated, show the profile.
     if (user) {
         console.log("Authenticated User: ", user)
         return <Profile />
