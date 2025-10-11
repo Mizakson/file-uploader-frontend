@@ -6,6 +6,8 @@ function Profile() {
 
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [folders, setFolders] = useState([])
+    const { user } = useAuth()
 
     const navigate = useNavigate()
 
@@ -13,7 +15,10 @@ function Profile() {
 
 
     const handleLogout = (e) => {
-        e.preventDefault
+        e.preventDefault()
+
+        if (loading) return
+
         setError(null)
         setLoading(true)
 
@@ -22,9 +27,15 @@ function Profile() {
 
     return (
         <div className="profile-page-container">
-            <h1>Hello from profile page</h1>
-            <p>Go back <Link to='/'>home</Link></p>
-            <button type="submit" onClick={handleLogout}>Logout</button>
+            <h1>Hello {user.name}</h1>
+            {/* <p>Go back <Link to='/'>home</Link></p> */}
+            <button type="submit" onClick={handleLogout} disabled={loading}>{loading ? 'Logging out...' : 'Logout'}</button>
+            <div className="content-display">
+                {folders.length === 0 && (
+                    <p>You have no folders. Click the + button to create a folder.</p>
+                )}
+                <button className="create-folder">+</button>
+            </div>
         </div>
 
     )
