@@ -2,18 +2,28 @@ import '@testing-library/jest-dom/vitest'
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import Homepage from '../src/pages/Homepage'
+import AppRouter from '../src/components/AppRouter'
+// import { useAuth } from '../src/contexts/AuthContext'
+
+const mockUseAuth = vi.fn()
+vi.mock('/src/contexts/AuthContext.jsx', () => ({
+    useAuth: () => mockUseAuth(),
+}))
 
 const setupRender = () => {
     render(
         <BrowserRouter>
-            <Homepage />
+            <AppRouter />
         </BrowserRouter>
     )
 }
 
 describe('Homepage element render test', () => {
-    beforeEach(setupRender)
+    beforeEach(() => {
+        mockUseAuth.mockClear()
+        mockUseAuth.mockReturnValue({ user: null, loading: false })
+        setupRender()
+    })
 
     it('should render all elements correctly', () => {
         // h1 text  - File Uploader
@@ -23,6 +33,14 @@ describe('Homepage element render test', () => {
         expect(screen.getByRole('heading', { name: /File Uploader/i })).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /Sign Up/i })).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /Login/i })).toBeInTheDocument()
+    })
+})
+
+describe('AppRouter rendering test', () => {
+    it('should render "Checking user session... when loading is true', () => {
+        mockUseAuth.mockReturnValueOnce({ user: null, loading: true })
+        setupRender()
+        expect(screen.getByText(/Checking User Session.../i)).toBeInTheDocument()
     })
 })
 

@@ -34,6 +34,7 @@ global.fetch = vi.fn(() =>
         ok: true,
         json: () => Promise.resolve({
             message: "User logged in",
+            token: "Bearer mock-test-token-string",
             user: { id: 1, username: "TestUser" }
         }),
     })
@@ -97,7 +98,7 @@ describe('Login page submission and navigation test', () => {
         })
 
         await vi.waitFor(() => {
-            expect(mockNavigate).toHaveBeenCalledWith('/profile')
+            expect(mockNavigate).toHaveBeenCalledWith('/')
         })
 
     })
