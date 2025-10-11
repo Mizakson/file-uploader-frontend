@@ -34,7 +34,7 @@ function Profile() {
                 {folders.length === 0 && (
                     <p>You have no folders. Click the + button to create a folder.</p>
                 )}
-                <button className="create-folder">+</button>
+                <button className="create-folder"><Link to='/add-folder'>+</Link></button>
             </div>
         </div>
 

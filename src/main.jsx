@@ -9,6 +9,7 @@ import AppRouter from './components/AppRouter.jsx'
 import SignUp from './pages/SignUp.jsx'
 import Login from './pages/Login.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
+import AddFolder from './pages/AddFolder.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <ErrorPage />
   },
+  {
+    path: "/add-folder",
+    element: <AddFolder />,
+    errorElement: <ErrorPage />
+  }
 ])
 
 createRoot(document.getElementById('root')).render(
