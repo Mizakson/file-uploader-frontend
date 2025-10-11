@@ -73,19 +73,26 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = async () => {
+        const token = localStorage.getItem('token')
+
+        const cleanToken = token ? token.trim() : null
+
         try {
 
             const response = await fetch(`${API_URL}/api/logout`, {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${cleanToken}`,
+                }
             })
 
             if (!response.ok) {
                 console.warn("Logout request failed on server side")
-
             }
 
             setUser(null)
             localStorage.removeItem('token')
+            console.log("User logged out successfully")
 
         } catch (err) {
             console.error("Logout failed: ", err)
