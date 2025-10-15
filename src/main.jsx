@@ -11,6 +11,7 @@ import Login from './pages/Login.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import AddFolder from './pages/AddFolder.jsx'
 import EditFolder from './pages/EditFolder.jsx'
+import FolderDetails from './components/FolderDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,13 @@ const router = createBrowserRouter([
     path: "/edit-folder/:folderId",
     element: <EditFolder />,
     errorElement: <ErrorPage />
-  }
+  },
+  {
+    path: "/folder/:folderId",
+    element: <FolderDetails />,
+    errorElement: <ErrorPage />
+  },
+
 ])
 
 createRoot(document.getElementById('root')).render(
