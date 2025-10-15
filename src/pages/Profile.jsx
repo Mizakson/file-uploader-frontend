@@ -89,13 +89,14 @@ function Profile() {
             <h1>Hello {user.name}</h1>
             <button type="submit" onClick={handleLogout}>Logout</button>
             <div className="content-display">
-                {folders.length === 0 && (
-                    <p>You have no folders. Click the + button to create a folder.</p>
-                )}
 
                 <div className="folders-display">
                     <h2>Your Folders</h2>
                     <button className="create-folder"><Link to='/add-folder'>+</Link></button>
+
+                    {!loading && folders.length === 0 && (
+                        <p>You have no folders. Click the + button to create a folder.</p>
+                    )}
 
                     {loading && <p>Loading folders...</p>}
 
@@ -103,14 +104,12 @@ function Profile() {
                         <div className="folders-list">
                             {folders.map(folder => (
                                 <div key={folder.id} className="folder-item">
-                                    {/* Link to a detailed folder view */}
                                     <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
                                 </div>
                             ))}
                         </div>
                     )}
                 </div>
-
 
             </div>
         </div>
