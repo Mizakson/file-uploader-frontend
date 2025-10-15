@@ -5,6 +5,8 @@ const AuthContext = createContext({
     loading: true,
     login: async () => { },
     logout: async () => { },
+    dataRefreshKey: 0,
+    triggerDataRefresh: () => { },
 })
 
 const API_URL = import.meta.env.VITE_API_URL
@@ -13,6 +15,13 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const [authToken, setAuthToken] = useState(null)
+
+    const [dataRefreshKey, setDataRefreshKey] = useState(0)
+
+    const triggerDataRefresh = () => {
+        setDataRefreshKey(prevKey => prevKey + 1);
+        console.log("Data refresh key incremented.");
+    }
 
     useEffect(() => {
         const checkSession = async () => {
@@ -108,6 +117,8 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         authToken,
+        dataRefreshKey,
+        triggerDataRefresh
     }
 
     return (

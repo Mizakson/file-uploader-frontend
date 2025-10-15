@@ -8,7 +8,7 @@ function Profile() {
     const [loading, setLoading] = useState(false)
     const [folders, setFolders] = useState([])
 
-    const { user, logout } = useAuth()
+    const { user, logout, dataRefreshKey } = useAuth()
 
     const navigate = useNavigate()
 
@@ -69,7 +69,7 @@ function Profile() {
         fetchFolders()
 
         return () => { isMounted = false }
-    }, [API_URL, cleanToken, setError, setLoading, setFolders])
+    }, [API_URL, cleanToken, setError, setLoading, setFolders, dataRefreshKey])
 
     console.log(folders)
 

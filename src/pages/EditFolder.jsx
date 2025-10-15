@@ -82,7 +82,11 @@ function EditFolder() {
 
             responseData = await response.json()
             console.log(responseData)
-            // navigate(`/folder/${folderId}`)
+
+            if (triggerDataRefresh) {
+                triggerDataRefresh()
+            }
+
             navigate("/")
         } catch (err) {
             console.error("Folder update failed: ", err.message)
