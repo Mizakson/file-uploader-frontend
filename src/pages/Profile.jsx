@@ -106,8 +106,8 @@ function Profile() {
                                 <div key={folder.id} className="folder-item">
                                     <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
                                     <div className="folder-btns">
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <button><Link to={`/edit-folder/${folder.id}`}>Edit</Link></button>
+                                        <button><Link to={`/delete/${folder.id}`}>Delete</Link></button>
                                     </div>
                                 </div>
                             ))}

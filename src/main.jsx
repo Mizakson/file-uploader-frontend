@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp.jsx'
 import Login from './pages/Login.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import AddFolder from './pages/AddFolder.jsx'
+import EditFolder from './pages/EditFolder.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
   {
     path: "/add-folder",
     element: <AddFolder />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/edit-folder/:folderId",
+    element: <EditFolder />,
     errorElement: <ErrorPage />
   }
 ])
