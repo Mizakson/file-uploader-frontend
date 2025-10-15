@@ -105,6 +105,10 @@ function Profile() {
                             {folders.map(folder => (
                                 <div key={folder.id} className="folder-item">
                                     <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
+                                    <div className="folder-btns">
+                                        <button>Edit</button>
+                                        <button>Delete</button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
