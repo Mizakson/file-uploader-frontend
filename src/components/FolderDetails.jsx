@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
-// TODO -- ADD UPLOAD FILE BUTTON, get upload logic to work
-// THEN PROPERLY LOOP AND RENDER FILE WITH EMPTY BUTTONS
-// THEN GET BUTTONS TO WORK
+// TODO: GET FILE BUTTONS TO WORK
 
 function FolderDetails() {
     const { folderId } = useParams()
@@ -83,16 +81,40 @@ function FolderDetails() {
     return (
         <div className="folder-details-container">
 
-            { /* add whole page loading state, because folder h1 tag takes time to load */}
+            {loading && <p>Loading folder details...</p>}
 
-            <h1>Folder {folder}</h1>
-            <button><Link to="/">Back to Profile</Link></button>
+            {!loading && (
+                <>
+                    <h1>Folder {folder}</h1>
+                    <button><Link to="/">Back to Profile</Link></button>
 
-            {!loading && files.length === 0 && (
-                <p>This folder has no files. Click the button to upload a file.</p>
+                    <button>
+                        <Link to={`/upload-file/${folderId}`}>Upload File</Link>
+                    </button>
+
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+
+                    {files.length === 0 && (
+                        <p>This folder has no files. Click the upload button to add one.</p>
+                    )}
+
+                    {files.length > 0 && (
+                        <div className="files-list">
+                            <h2>Files in Folder</h2>
+                            {files.map(file => (
+                                <div key={file.id} className="file-item">
+                                    <div>{file.name}</div>
+                                    <div className="file-btns">
+                                        <button>View Details</button>
+                                        <button>Download</button>
+                                        <button>Delete</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </>
             )}
-
-            <button className="create-folder"><Link to='/upload-file'>Upload File</Link></button>
         </div>
     )
 }

@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import AddFolder from './pages/AddFolder.jsx'
 import EditFolder from './pages/EditFolder.jsx'
 import FolderDetails from './components/FolderDetails.jsx'
+import UploadFile from './pages/UploadFile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
     element: <FolderDetails />,
     errorElement: <ErrorPage />
   },
+  {
+    path: "/upload-file/:folderId",
+    element: <UploadFile />,
+    errorElement: <ErrorPage />
+  },
+
 
 ])
 
