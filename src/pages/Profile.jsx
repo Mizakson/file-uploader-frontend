@@ -139,9 +139,10 @@ function Profile() {
                         <div className="folders-list">
                             {folders.map(folder => (
                                 <div key={folder.id} className="folder-item">
-                                    <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
+                                    <div>{folder.name}</div>
                                     <div className="folder-btns">
                                         <button><Link to={`/edit-folder/${folder.id}`}>Edit</Link></button>
+                                        <button><Link to={`/folder/${folder.id}`}>Details</Link></button>
                                         <button onClick={() => handleDelete(folder.id)}>Delete</button>
                                     </div>
                                 </div>
