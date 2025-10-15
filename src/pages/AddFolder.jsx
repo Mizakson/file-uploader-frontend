@@ -30,13 +30,13 @@ function AddFolder() {
         let responseData
 
         try {
-            response = await fetch(`${API_URL}/api/login`, {
+            response = await fetch(`${API_URL}/api/content/add-folder`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${cleanToken}`
                 },
-                body: JSON.stringify({ newFolder: folderName, id: user.id, })
+                body: JSON.stringify({ newFolder: folderName })
             })
 
             if (!response.ok) {

@@ -7,12 +7,71 @@ function Profile() {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const [folders, setFolders] = useState([])
-    const { user } = useAuth()
+
+    const { user, logout } = useAuth()
 
     const navigate = useNavigate()
 
-    const { logout } = useAuth()
+    const API_URL = import.meta.env.VITE_API_URL
+    const token = localStorage.getItem('token')
+    const cleanToken = token ? token.trim() : null
 
+    useEffect(() => {
+
+        let isMounted = true
+
+        const fetchFolders = async () => {
+            if (!cleanToken) return
+            setError(null)
+            setLoading(true)
+
+            try {
+                const response = await fetch(`${API_URL}/api/current-user`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${cleanToken}`
+                    },
+                })
+
+                if (!response.ok) {
+                    let errorData
+                    try {
+                        errorData = await response.json()
+                    } catch (e) {
+                        throw new Error(`HTTP Error, status: ${response.status}`)
+                    }
+                    const serverErrorMessage = errorData.message || errorData.error || `HTTP Error, status: ${response.status}`
+                    throw new Error(serverErrorMessage)
+                }
+
+                const responseData = await response.json()
+
+                if (isMounted) {
+                    console.log(responseData)
+                    setFolders(responseData.folders)
+                    setLoading(false)
+                }
+
+            } catch (err) {
+                console.error("Failed to fetch user data:", err.message)
+                if (isMounted) {
+                    setError(err.message)
+                    setFolders([])
+                }
+            } finally {
+                if (isMounted) {
+                    setLoading(false)
+                }
+            }
+        }
+
+        fetchFolders()
+
+        return () => { isMounted = false }
+    }, [API_URL, cleanToken, setError, setLoading, setFolders])
+
+    console.log(folders)
 
     const handleLogout = (e) => {
         e.preventDefault()
@@ -28,13 +87,31 @@ function Profile() {
     return (
         <div className="profile-page-container">
             <h1>Hello {user.name}</h1>
-            {/* <p>Go back <Link to='/'>home</Link></p> */}
-            <button type="submit" onClick={handleLogout} disabled={loading}>{loading ? 'Logging out...' : 'Logout'}</button>
+            <button type="submit" onClick={handleLogout}>Logout</button>
             <div className="content-display">
                 {folders.length === 0 && (
                     <p>You have no folders. Click the + button to create a folder.</p>
                 )}
-                <button className="create-folder"><Link to='/add-folder'>+</Link></button>
+
+                <div className="folders-display">
+                    <h2>Your Folders</h2>
+                    <button className="create-folder"><Link to='/add-folder'>+</Link></button>
+
+                    {loading && <p>Loading folders...</p>}
+
+                    {!loading && folders.length > 0 && (
+                        <div className="folders-list">
+                            {folders.map(folder => (
+                                <div key={folder.id} className="folder-item">
+                                    {/* Link to a detailed folder view */}
+                                    <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+
             </div>
         </div>
 
