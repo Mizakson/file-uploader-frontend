@@ -8,7 +8,7 @@ function Profile() {
     const [loading, setLoading] = useState(false)
     const [folders, setFolders] = useState([])
 
-    const { user, logout, dataRefreshKey } = useAuth()
+    const { user, logout, dataRefreshKey, triggerDataRefresh } = useAuth()
 
     const navigate = useNavigate()
 
@@ -84,6 +84,41 @@ function Profile() {
         logout()
     }
 
+    const handleDelete = async (folderId) => {
+        if (loading || !folderId) return
+
+        try {
+            const response = await fetch(`${API_URL}/api/content/${folderId}/delete-folder`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${cleanToken}`
+                },
+            })
+
+            if (!response.ok) {
+                let errorData
+                try {
+                    errorData = await response.json()
+                } catch (e) {
+                    throw new Error(`HTTP Error, status: ${response.status}`)
+                }
+                const serverErrorMessage = errorData.message || errorData.error || `HTTP Error, status: ${response.status}`
+                throw new Error(serverErrorMessage)
+            }
+
+            if (triggerDataRefresh) {
+                triggerDataRefresh()
+            }
+
+        } catch (err) {
+            console.error("Folder deletion failed: ", err.message)
+            setError(err.message)
+        } finally {
+            setLoading(false)
+        }
+
+    }
+
     return (
         <div className="profile-page-container">
             <h1>Hello {user.name}</h1>
@@ -107,7 +142,7 @@ function Profile() {
                                     <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
                                     <div className="folder-btns">
                                         <button><Link to={`/edit-folder/${folder.id}`}>Edit</Link></button>
-                                        <button><Link to={`/delete/${folder.id}`}>Delete</Link></button>
+                                        <button onClick={() => handleDelete(folder.id)}>Delete</button>
                                     </div>
                                 </div>
                             ))}
