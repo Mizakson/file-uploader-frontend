@@ -13,7 +13,7 @@ function AddFolder() {
     const { user } = useAuth()
     const navigate = useNavigate()
 
-    console.log(user)
+    // console.log(user)
 
     const API_URL = import.meta.env.VITE_API_URL
 
@@ -53,7 +53,7 @@ function AddFolder() {
             }
 
             responseData = await response.json()
-            console.log(responseData)
+            // console.log(responseData)
             navigate('/')
         } catch (err) {
             console.error("Folder creation failed: ", err.message)
