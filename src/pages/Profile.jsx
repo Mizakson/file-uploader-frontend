@@ -123,6 +123,9 @@ function Profile() {
         <div className="profile-page-container">
             <h1>Hello {user.name}</h1>
             <button type="submit" onClick={handleLogout}>Logout</button>
+
+            {error && <p className="error-message">{error}</p>}
+
             <div className="content-display">
 
                 <div className="folders-display">
