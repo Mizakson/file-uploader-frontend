@@ -49,12 +49,10 @@ function FolderDetails() {
                 }
 
                 const responseData = await response.json()
-                console.log(responseData.folder.files)
-                // create FileDetails.jsx
-                // will render response data for FileDetails.jsx
+                // console.log(responseData.folder.files)
 
                 if (isMounted) {
-                    console.log(responseData)
+                    // console.log(responseData)
                     setFiles(responseData.folder.files)
                     setFolder(responseData.folder.name)
                     setLoading(false)
@@ -113,7 +111,7 @@ function FolderDetails() {
         setError(null)
         setLoading(true)
 
-        console.log(file.id, file)
+        // console.log(file.id, file)
 
         try {
             const response = await fetch(`${API_URL}/api/content/files/${folderId}/${file.id}/signed-url`, {
