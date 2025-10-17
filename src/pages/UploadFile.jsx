@@ -63,7 +63,7 @@ function UploadFile() {
             }
 
             responseData = await response.json()
-            console.log(responseData)
+            // console.log(responseData)
             navigate(`/folder/${folderId}`)
         } catch (err) {
             console.error("Folder creation failed: ", err.message)
