@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
-// TODO: GET FILE BUTTONS TO WORK
 
 function FolderDetails() {
     const { folderId } = useParams()
@@ -53,7 +52,6 @@ function FolderDetails() {
                 console.log(responseData.folder.files)
                 // create FileDetails.jsx
                 // will render response data for FileDetails.jsx
-                // {name, id, uploadedAt}
 
                 if (isMounted) {
                     console.log(responseData)
@@ -78,6 +76,7 @@ function FolderDetails() {
 
         return () => { isMounted = false }
     }, [API_URL, cleanToken, setError, setLoading, setFiles, setFolder])
+
     const handleDeleteFile = async (fileId) => {
         if (loading || !fileId) return
 
@@ -153,7 +152,7 @@ function FolderDetails() {
     }
 
     const handleViewDetails = (fileId) => {
-        navigate(`/file/${fileId}`)
+        navigate(`/file/${folderId}/${fileId}`)
     }
 
     return (
