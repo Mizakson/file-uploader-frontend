@@ -109,7 +109,6 @@ describe('EditFolder', () => {
         expect(input).toHaveAttribute('placeholder', 'Enter new name')
     })
 
-    // Test 3: Input Change
     it('should update folderName state on input change', async () => {
         fetchSpy.mockResolvedValueOnce({
             ok: true,
