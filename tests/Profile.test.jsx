@@ -87,24 +87,22 @@ const setupRender = () => {
 
 // Tests
 
-describe('Profile component - Initial Render and Folder Fetch', () => {
+describe('Initial render and folder fetch', () => {
     beforeEach(() => {
         vi.clearAllMocks()
         global.fetch = successfulFetch
         localStorageMock.setItem('token', 'mock-test-token-string')
-        // Set useAuth to the default successful context
         useAuth.mockImplementation(() => mockAuthContextValue)
     })
 
     it('should display loading text initially and then the user name and folders', async () => {
         setupRender()
 
-        // Initial state: User name and loading text
+
         expect(screen.getByRole('heading', { name: /Hello Test User/i })).toBeInTheDocument()
         expect(screen.getByText('Loading folders...')).toBeInTheDocument()
-        expect(global.fetch).toHaveBeenCalledTimes(1) // Fetch called on mount
+        expect(global.fetch).toHaveBeenCalledTimes(1)
 
-        // Wait for the data fetch to complete and component to update
         await waitFor(() => {
             expect(screen.queryByText('Loading folders...')).not.toBeInTheDocument()
             expect(screen.getByText('Folder A')).toBeInTheDocument()
@@ -113,7 +111,6 @@ describe('Profile component - Initial Render and Folder Fetch', () => {
             expect(screen.getAllByRole('button', { name: /Delete/i })).toHaveLength(2)
         })
 
-        // Check fetch call details
         expect(global.fetch).toHaveBeenCalledWith(
             `${import.meta.env.VITE_API_URL}/api/current-user`,
             expect.objectContaining({
@@ -127,7 +124,6 @@ describe('Profile component - Initial Render and Folder Fetch', () => {
     })
 
     it('should display "no folders" message when fetch returns an empty array', async () => {
-        // Override the mock fetch to return no folders
         global.fetch = vi.fn(() => Promise.resolve({
             ok: true,
             json: () => Promise.resolve({ user: mockAuthContextValue.user, folders: [] }),
@@ -140,7 +136,6 @@ describe('Profile component - Initial Render and Folder Fetch', () => {
     })
 
     it('should display an error message if the fetch fails', async () => {
-        // Override the mock fetch to return a failure status
         global.fetch = vi.fn(() => Promise.resolve({
             ok: false,
             status: 401,
@@ -149,18 +144,16 @@ describe('Profile component - Initial Render and Folder Fetch', () => {
         setupRender()
 
         await waitFor(() => {
-            // Now that the component renders the error, this passes.
             expect(screen.getByText(/Unauthorized/i)).toBeInTheDocument()
         })
 
-        // Check that folders list is empty and not loading
         expect(screen.queryByText('Loading folders...')).not.toBeInTheDocument()
         expect(screen.queryByText('Folder A')).not.toBeInTheDocument()
     })
 })
 
 
-describe('Profile component - User Actions', () => {
+describe('User actions (logout, button clicks, navigation)', () => {
     let user
 
     beforeEach(async () => {
@@ -169,7 +162,6 @@ describe('Profile component - User Actions', () => {
         localStorageMock.setItem('token', 'mock-test-token-string')
         useAuth.mockImplementation(() => mockAuthContextValue)
 
-        // Initial render and wait for folder data to load
         setupRender()
         user = userEvent.setup()
         await waitFor(() => {
