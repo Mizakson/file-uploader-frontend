@@ -55,7 +55,7 @@ function EditFolder() {
         let response
         let responseData
 
-        console.log(user)
+        // console.log(user)
 
         try {
             response = await fetch(`${API_URL}/api/content/${folderId}/edit-folder`, {
@@ -81,7 +81,7 @@ function EditFolder() {
             }
 
             responseData = await response.json()
-            console.log(responseData)
+            // console.log(responseData)
 
             if (triggerDataRefresh) {
                 triggerDataRefresh()
