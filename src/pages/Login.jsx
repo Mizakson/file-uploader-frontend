@@ -69,7 +69,7 @@ function Login() {
                 )}
                 <div className="fields">
                     <fieldset>
-                        <label htmlFor="username">Username: </label>
+                        <label htmlFor="username">Username </label>
                         <input
                             type="text"
                             name="username"
@@ -80,7 +80,7 @@ function Login() {
                         />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="password">Password </label>
                         <input
                             type="password"
                             name="password"
