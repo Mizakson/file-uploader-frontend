@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+input {
+    font-family: inherit;
+}
+
 
 /* homepage */
 .homepage-container {
@@ -40,4 +44,52 @@ a {
 .homepage-container>.options {
     display: flex;
     gap: 2vw;
+}
+
+
+/* signup */
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.sign-up-container>h1 {
+    font-size: 3rem;
+}
+
+.sign-up-container>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    font-size: 1rem;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.fields>fieldset {
+    border: none;
+    display: grid;
+    gap: 1vh;
+}
+
+.fields>fieldset>input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.sign-up-container>.options-text {
+    text-align: center;
+}
+
+.sign-up-container>.options-text>p>a:hover {
+    color: blue;
 }

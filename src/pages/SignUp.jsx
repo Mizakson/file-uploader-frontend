@@ -70,7 +70,7 @@ function SignUp() {
                 )}
                 <div className="fields">
                     <fieldset>
-                        <label htmlFor="username">Username: </label>
+                        <label htmlFor="username">Username </label>
                         <input
                             type="text"
                             name="username"
@@ -81,7 +81,7 @@ function SignUp() {
                         />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="password">Password </label>
                         <input
                             type="password"
                             name="password"
@@ -92,7 +92,7 @@ function SignUp() {
                         />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="confirm-password">Confirm Password: </label>
+                        <label htmlFor="confirm-password">Confirm Password </label>
                         <input
                             type="password"
                             name="confirm-password"
