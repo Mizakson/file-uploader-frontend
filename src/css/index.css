@@ -190,3 +190,39 @@ input {
 #edit-folder-input {
     padding-bottom: 6vh;
 }
+
+
+/* folder-details */
+.folder-details-container,
+.folder-details-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.folder-details-top-btns {
+    display: flex;
+    gap: .75vw;
+}
+
+.files-list {
+    text-align: center;
+}
+
+.files-list>h2 {
+    padding-bottom: 4vh;
+}
+
+.file-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-bottom: 2vh;
+    align-items: center;
+    gap: 2vw;
+}
+
+.file-btns {
+    display: flex;
+    gap: .75vw;
+}

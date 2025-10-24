@@ -160,14 +160,15 @@ function FolderDetails() {
 
             {!loading && (
                 <>
-                    <h1>Folder {folder}</h1>
-                    <button><Link to="/">Back to Profile</Link></button>
+                    <div className="folder-details-top"><h1>Folder {folder}</h1>
+                        <div className="folder-details-top-btns"><button><Link to="/">Back to Profile</Link></button>
+                            <button>
+                                <Link to={`/upload-file/${folderId}`}>Upload File</Link>
+                            </button></div>
 
-                    <button>
-                        <Link to={`/upload-file/${folderId}`}>Upload File</Link>
-                    </button>
 
-                    {error && <p style={{ color: "red" }}>{error}</p>}
+                        {error && <p style={{ color: "red" }}>{error}</p>}</div>
+
 
                     {files.length === 0 ? (
                         <p>This folder has no files. Click the upload button to add one.</p>
@@ -176,7 +177,7 @@ function FolderDetails() {
                             <h2>Files in Folder</h2>
                             {files.map(file => (
                                 <div key={file.id} className="file-item">
-                                    <div>{file.name}</div>
+                                    <div className="file-name-text">{file.name}</div>
                                     <div className="file-btns">
 
                                         <button onClick={() => handleViewDetails(file.id)}>View Details</button>
