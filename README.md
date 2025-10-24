@@ -35,7 +35,7 @@
 ## Tech Stack
 
   ### Frontend
-  * __React__ (Embedded JavaScript): A Javascript library for building user interfaces.
+  * __React__: A Javascript library for building user interfaces.
 
   * __React Router__ DOM: For declarative routing within the application.
 
