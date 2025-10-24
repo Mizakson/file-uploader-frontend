@@ -81,10 +81,10 @@ describe('EditFolder', () => {
             })
         )
 
-        const heading = await screen.findByRole('heading', { name: `Edit folder: ${initialFolderName}` })
+        const heading = await screen.findByRole('heading', { name: `Edit folder ${initialFolderName}` })
         expect(heading).toBeInTheDocument()
 
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         expect(input).toHaveValue(initialFolderName)
 
         expect(screen.queryByRole('alert')).not.toBeInTheDocument()
@@ -104,7 +104,7 @@ describe('EditFolder', () => {
         const errorMessage = await screen.findByText('Failed to load current folder name.')
         expect(errorMessage).toBeInTheDocument()
 
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         expect(input).toHaveValue("")
         expect(input).toHaveAttribute('placeholder', 'Enter new name')
     })
@@ -117,7 +117,7 @@ describe('EditFolder', () => {
 
         const { user } = setupRender()
 
-        const input = await screen.findByLabelText(/Folder Name:/i)
+        const input = await screen.findByLabelText(/Folder Name/i)
 
         await user.clear(input)
         await user.type(input, newFolderName)
@@ -132,7 +132,7 @@ describe('EditFolder', () => {
         })
 
         const { user } = setupRender()
-        const input = await screen.findByLabelText(/Folder Name:/i)
+        const input = await screen.findByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: 'Edit' })
 
         await user.clear(input)
@@ -181,7 +181,7 @@ describe('EditFolder', () => {
         })
 
         const { user } = setupRender()
-        const input = await screen.findByLabelText(/Folder Name:/i)
+        const input = await screen.findByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: 'Edit' })
 
         await user.type(input, 'New Name')
@@ -219,7 +219,7 @@ describe('EditFolder', () => {
 
         const { user } = setupRender()
 
-        const input = await screen.findByLabelText(/Folder Name:/i)
+        const input = await screen.findByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: 'Edit' })
 
         await user.type(input, 'Test Folder')

@@ -60,7 +60,7 @@ describe('AddFolder', () => {
 
         expect(screen.getByRole('heading', { level: 1, name: /Add folder/i })).toBeInTheDocument()
 
-        expect(screen.getByLabelText(/Folder Name:/i)).toBeInTheDocument()
+        expect(screen.getByLabelText(/Folder Name/i)).toBeInTheDocument()
 
         expect(screen.getByRole('button', { name: '+' })).toBeInTheDocument()
         expect(screen.getByRole('link', { name: /Home/i })).toHaveAttribute('href', '/')
@@ -71,7 +71,7 @@ describe('AddFolder', () => {
 
     it('should update folderName state on input change', async () => {
         const { user } = setupRender()
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         const testName = "My New Project"
 
         await user.type(input, testName)
@@ -81,7 +81,7 @@ describe('AddFolder', () => {
 
     it('should call API, navigate to home on success, and clear loading state', async () => {
         const { user } = setupRender()
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: '+' })
         const folderName = "Documents"
 
@@ -119,7 +119,7 @@ describe('AddFolder', () => {
         })
 
         const { user } = setupRender()
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: '+' })
 
         await user.type(input, 'Bad Folder')
@@ -147,7 +147,7 @@ describe('AddFolder', () => {
         })
 
         const { user } = setupRender()
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: '+' })
 
         await user.type(input, 'Bad Folder')
@@ -167,7 +167,7 @@ describe('AddFolder', () => {
         fetchSpy.mockReturnValue(new Promise(() => { }))
 
         const { user } = setupRender()
-        const input = screen.getByLabelText(/Folder Name:/i)
+        const input = screen.getByLabelText(/Folder Name/i)
         const submitButton = screen.getByRole('button', { name: '+' })
 
         await user.type(input, 'Test Folder')

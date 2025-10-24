@@ -40,7 +40,7 @@ describe('AppRouter rendering test', () => {
     it('should render "Checking user session... when loading is true', () => {
         mockUseAuth.mockReturnValueOnce({ user: null, loading: true })
         setupRender()
-        expect(screen.getByText(/Checking User Session.../i)).toBeInTheDocument()
+        expect(screen.getByText(/Checking Session.../i)).toBeInTheDocument()
     })
 })
 

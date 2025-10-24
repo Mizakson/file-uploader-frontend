@@ -19,9 +19,9 @@ describe('Sign Up component render test', () => {
     it('should render all elements correctly', () => {
 
         expect(screen.getByRole('heading', { name: /Sign Up/i })).toBeInTheDocument()
-        expect(screen.getByLabelText("Username:")).toBeInTheDocument()
-        expect(screen.getByLabelText("Password:")).toBeInTheDocument()
-        expect(screen.getByLabelText("Confirm Password:")).toBeInTheDocument()
+        expect(screen.getByLabelText("Username")).toBeInTheDocument()
+        expect(screen.getByLabelText("Password")).toBeInTheDocument()
+        expect(screen.getByLabelText("Confirm Password")).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /Sign Up/i })).toBeInTheDocument()
     })
 })
@@ -35,8 +35,8 @@ describe('Sign up component password validation tests', () => {
     })
 
     it('should display an error when passwords do not match', async () => {
-        const passwordInput = screen.getByLabelText("Password:")
-        const confirmPasswordInput = screen.getByLabelText("Confirm Password:")
+        const passwordInput = screen.getByLabelText("Password")
+        const confirmPasswordInput = screen.getByLabelText("Confirm Password")
         const signUpButton = screen.getByRole('button', { name: /Sign Up/i })
 
         await user.type(passwordInput, 'password123')
@@ -48,8 +48,8 @@ describe('Sign up component password validation tests', () => {
     })
 
     it('should display an error when the password is less than 6 characters long', async () => {
-        const passwordInput = screen.getByLabelText("Password:")
-        const confirmPasswordInput = screen.getByLabelText("Confirm Password:")
+        const passwordInput = screen.getByLabelText("Password")
+        const confirmPasswordInput = screen.getByLabelText("Confirm Password")
         const signUpButton = screen.getByRole('button', { name: /Sign Up/i })
 
         await user.type(passwordInput, 'passw')
@@ -92,9 +92,9 @@ describe('Sign Up component submission and navigation test', () => {
     })
 
     it('should submit form successfully and navigate to login page', async () => {
-        const usernameInput = screen.getByLabelText("Username:");
-        const passwordInput = screen.getByLabelText("Password:");
-        const confirmPasswordInput = screen.getByLabelText("Confirm Password:");
+        const usernameInput = screen.getByLabelText("Username");
+        const passwordInput = screen.getByLabelText("Password");
+        const confirmPasswordInput = screen.getByLabelText("Confirm Password");
         const signUpButton = screen.getByRole('button', { name: /Sign Up/i });
 
         await user.type(usernameInput, 'TestUser')

@@ -20,8 +20,8 @@ describe("Login page render test", () => {
     it("should render all elements correctly", () => {
 
         expect(screen.getByRole('heading', { name: /Login/i })).toBeInTheDocument()
-        expect(screen.getByLabelText("Username:")).toBeInTheDocument()
-        expect(screen.getByLabelText("Password:")).toBeInTheDocument()
+        expect(screen.getByLabelText("Username")).toBeInTheDocument()
+        expect(screen.getByLabelText("Password")).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /Login/i })).toBeInTheDocument()
     })
 })
@@ -67,8 +67,8 @@ describe('Login page submission and navigation test', () => {
     })
 
     it('should submit form successfully and navigate to profile page', async () => {
-        const usernameInput = screen.getByLabelText("Username:");
-        const passwordInput = screen.getByLabelText("Password:");
+        const usernameInput = screen.getByLabelText("Username");
+        const passwordInput = screen.getByLabelText("Password");
         const loginButton = screen.getByRole('button', { name: /Login/i });
 
         await user.type(usernameInput, 'TestUser')

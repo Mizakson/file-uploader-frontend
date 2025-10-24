@@ -60,7 +60,7 @@ describe('UploadFile', () => {
     it('should render the component correctly with initial state', () => {
         setupRender()
         expect(screen.getByRole('heading', { name: /Upload File/i })).toBeInTheDocument()
-        expect(screen.getByLabelText(/Choose a file to upload:/i)).toBeInTheDocument()
+        expect(screen.getByLabelText(/Choose a file to upload/i)).toBeInTheDocument()
         expect(screen.getByRole('button', { name: 'Upload' })).toBeInTheDocument()
 
         expect(screen.getByRole('button', { name: 'Upload' })).toBeDisabled()
@@ -73,7 +73,7 @@ describe('UploadFile', () => {
 
     it('should allow file selection and enable the upload button', async () => {
         const { user } = setupRender()
-        const fileInput = screen.getByLabelText(/Choose a file to upload:/i)
+        const fileInput = screen.getByLabelText(/Choose a file to upload/i)
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
         expect(uploadButton).toBeDisabled()
@@ -89,7 +89,7 @@ describe('UploadFile', () => {
         const { user } = setupRender()
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
-        await user.upload(screen.getByLabelText(/Choose a file to upload:/i), mockFile)
+        await user.upload(screen.getByLabelText(/Choose a file to upload/i), mockFile)
         expect(uploadButton).not.toBeDisabled()
 
     })
@@ -102,7 +102,7 @@ describe('UploadFile', () => {
             json: async () => ({ message: 'File uploaded successfully' }),
         })
 
-        const fileInput = screen.getByLabelText(/Choose a file to upload:/i)
+        const fileInput = screen.getByLabelText(/Choose a file to upload/i)
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
         await user.upload(fileInput, mockFile)
@@ -145,7 +145,7 @@ describe('UploadFile', () => {
         })
 
         const { user } = setupRender()
-        const fileInput = screen.getByLabelText(/Choose a file to upload:/i)
+        const fileInput = screen.getByLabelText(/Choose a file to upload/i)
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
         await user.upload(fileInput, mockFile)
@@ -174,7 +174,7 @@ describe('UploadFile', () => {
         })
 
         const { user } = setupRender()
-        const fileInput = screen.getByLabelText(/Choose a file to upload:/i)
+        const fileInput = screen.getByLabelText(/Choose a file to upload/i)
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
         await user.upload(fileInput, mockFile)
@@ -202,7 +202,7 @@ describe('UploadFile', () => {
         fetchSpy.mockReturnValueOnce(new Promise(() => { }))
 
         const { user } = setupRender()
-        const fileInput = screen.getByLabelText(/Choose a file to upload:/i)
+        const fileInput = screen.getByLabelText(/Choose a file to upload/i)
         const uploadButton = screen.getByRole('button', { name: 'Upload' })
 
         await user.upload(fileInput, mockFile)

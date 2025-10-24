@@ -100,7 +100,7 @@ describe('FolderDetails', () => {
             })
         )
 
-        const heading = await screen.findByRole('heading', { name: `Folder ${mockFolderName}` })
+        const heading = await screen.findByRole('heading', { name: `Folder - ${mockFolderName}` })
         expect(heading).toBeInTheDocument()
 
         expect(screen.getByText(mockFiles[0].name)).toBeInTheDocument()
