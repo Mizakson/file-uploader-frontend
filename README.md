@@ -146,11 +146,10 @@
   * __Cloud Services Integration__: Integrating a third-party cloud service (Supabase) for both database management and file storage.
 
   ## Future Enhancements
-  * __Refactor Frontend__: Refactor frontend from EJS to React (IN PROGRESS)
   
   * __Drag-and-Drop__: Implement a more user-friendly interface for file uploads using drag-and-drop functionality.
 
-* __Nested Folders__: Add the ability to create folders within other folders for better organization.
+  * __Nested Folders__: Add the ability to create folders within other folders for better organization.
   
  * __UI/UX Improvement__: Enhance the visual design with a modern CSS framework like Tailwind CSS.
 
