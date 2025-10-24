@@ -75,14 +75,16 @@ function UploadFile() {
 
     return (
         <div className="upload-file-page-container">
-            <h1>Upload File{ }</h1>
+            <div className="upload-file-title-text">
+                <h1>Upload File</h1>
+            </div>
             <form onSubmit={handleSubmit} id="file-upload-form">
                 {error && (
                     <p className="error-msg" style={{ color: "red" }}>{error}</p>
                 )}
                 <div className="fields">
                     <fieldset>
-                        <label htmlFor="newFile">Choose a file to upload: </label>
+                        <label htmlFor="newFile">Choose a file to upload </label>
                         <input
                             type="file"
                             name="newFile"

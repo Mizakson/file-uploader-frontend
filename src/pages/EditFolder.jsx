@@ -98,14 +98,14 @@ function EditFolder() {
 
     return (
         <div className="edit-folder-page-container">
-            <h1>Edit folder: {originalFolderName}</h1>
+            <h1>Edit folder {originalFolderName}</h1>
             <form onSubmit={handleSubmit}>
                 {error && (
                     <p className="error-msg" style={{ color: "red" }}>{error}</p>
                 )}
                 <div className="fields">
                     <fieldset id="edit-folder-input">
-                        <label htmlFor="newName">Folder Name: </label>
+                        <label htmlFor="newName">Folder Name </label>
                         <input
                             type="text"
                             name="newName"

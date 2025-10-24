@@ -4,7 +4,8 @@
 }
 
 /* general rules */
-button {
+button,
+input[type=file]::file-selector-button {
     font-family: inherit;
     background-color: blue;
     color: white;
@@ -16,7 +17,13 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+input[type=file]::file-selector-button {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+button:hover,
+input[type=file]::file-selector-button:hover {
     background-color: rgb(68, 146, 214);
 }
 
@@ -67,6 +74,7 @@ input {
 
 .homepage-container>h1 {
     font-size: 5rem;
+    text-align: center;
 }
 
 .homepage-container>.options {
@@ -235,6 +243,7 @@ input {
     align-items: center;
     gap: 5vh;
     font-size: 2rem;
+    text-align: center;
 }
 
 .file-details-container {
@@ -254,7 +263,29 @@ input {
 }
 
 
+/* upload-file  */
+.upload-file-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+    padding-top: 5vh;
+}
+
+.fields {
+    padding-bottom: 4vh;
+}
+
+.upload-file-page-title-text {
+    text-align: center;
+}
+
 /* media-queries */
+/** 
+    - not needed right now, will just leave them mostly empty 
+    - stylesheet already uses mostly relative units
+    - app doesn't look bad when adjusting window size
+**/
 
 
 /* tablet layout */
@@ -262,4 +293,23 @@ input {
 
 
 /* mobile layout */
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+    .folder-item {
+        gap: 1vw;
+    }
+
+    .file-item,
+    .folder-item {
+        font-size: .75rem;
+    }
+
+    .file-btns>button,
+    .folder-btns>button {
+        font-size: .65rem;
+    }
+
+    .file-details-container>div {
+        text-align: center;
+    }
+
+}

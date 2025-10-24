@@ -72,7 +72,7 @@ function AddFolder() {
                 )}
                 <div className="fields">
                     <fieldset id="add-folder-input">
-                        <label htmlFor="newFolder">Folder Name: </label>
+                        <label htmlFor="newFolder">Folder Name </label>
                         <input
                             type="text"
                             name="newFolder"
