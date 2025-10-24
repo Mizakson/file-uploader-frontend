@@ -71,7 +71,7 @@ function AddFolder() {
                     <p className="error-msg" style={{ color: "red" }}>{error}</p>
                 )}
                 <div className="fields">
-                    <fieldset>
+                    <fieldset id="add-folder-input">
                         <label htmlFor="newFolder">Folder Name: </label>
                         <input
                             type="text"
