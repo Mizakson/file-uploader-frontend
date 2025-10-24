@@ -22,7 +22,7 @@
   (Note: The live demo may experience a brief "cold start" due to hosting on a free service tier.)
 
 ## Features
-  * __User Authentication__: Secure, JJWT-based authentication using Passport.js with a local strategy.
+  * __User Authentication__: Secure, JWT-based authentication using Passport.js with a local strategy.
 
   * __Account Management__: Allows users to create new accounts and log in securely.
 
