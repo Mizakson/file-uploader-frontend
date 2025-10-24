@@ -47,8 +47,7 @@
 
   * __CSS__: For styling and layout.
 
-  ### Backend
-  LINK TO BACKEND REPO HERE
+  ### [Backend](https://github.com/Mizakson/file-uploader-backend)
   * __Node.js__: Server-side runtime environment.
 
   * __Express__: Web application framework for building the API and routing.
@@ -93,19 +92,17 @@
   SUPABASE_URL="https://your-project-id.supabase.co"
   SUPABASE_SERVICE_KEY="your-supabase-service-role-key"
   
-  # Passport Session Secret
-  SESSION_SECRET="a_secret_key"
   ```
   (Note: None of the environment variables should be shared publicly)
 
   ### Installation
-  1. Clone the repository
+  1. Clone the backend repository
   ``` bash
-  git clone https://github.com/Mizakson/file-uploader.git
-  cd file-uploader
+  git clone https://github.com/Mizakson/file-uploader-backend.git
+  cd file-uploader-backend
   ```
 
-  2. Install project dependencies
+  2. Install backend dependencies
   ``` bash
   npm install
   ```
@@ -120,7 +117,19 @@
   npm start
   ```
 
-  The application will be running at `http://localhost:3000`
+  The backend will be running at `http://localhost:3000`
+
+
+  5. Clone the frontend repository
+  ``` bash
+    git clone https://github.com/Mizakson/file-uploader-frontend.git
+    cd file-uploader-frontend
+  ```
+
+  6. Install frontend dependencies
+  ``` bash
+  npm install
+  ```
 
   ## Testing
   To run the test suite, run the following command(s)
