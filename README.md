@@ -77,6 +77,7 @@
 
   You will also need an existing [Supabase](https://supabase.com/) project
   
+  
   ### Environment Variables
   Create a .env file in the root directory of the project.
 
@@ -97,6 +98,7 @@
 
   ### Installation
   1. Clone the backend repository
+  Here is a link to the [backend repository](https://github.com/Mizakson/file-uploader-backend)
   ``` bash
   git clone https://github.com/Mizakson/file-uploader-backend.git
   cd file-uploader-backend
@@ -131,10 +133,17 @@
   npm install
   ```
 
+  7. Run frontend development server
+  ``` bash
+  npm run dev
+  ```
+
+  The frontend will be running at `http://localhost:5173`
+
   ## Testing
-  To run the test suite, run the following command(s)
+  To run the frontend test suite, run the following command(s)
   ``` bash 
-  # full test suite
+  # full frontend test suite
   npm test
 
   # inidivual test file
@@ -144,11 +153,11 @@
   ## What I Learned
   This project was a fantastic opportunity to deepen my understanding of several core concepts in full-stack development, including:
   
-  * __Full-Stack Architecture__: Building and connecting a multi-layered application, from the frontend (EJS) to the backend (Express) and the database (PostgreSQL with Supabase).
+  * __Full-Stack Architecture__: Building and connecting a multi-layered application, from the frontend (React) to the backend (Express) and the database (PostgreSQL with Supabase).
 
-  * __Stateful Authentication__: Implementing and managing a session-based authentication system using Passport.js.
+  * __JWT Authentication__: Implementing and managing a JWT-based authentication system using Passport.js.
 
-  * __ORM Usage__: Gaining hands-on experience with Prisma, which significantly simplified database interactions and migrations.
+  * __ORM Usage__: Gaining hands-on experience with Prisma
 
   * __Cloud Services Integration__: Integrating a third-party cloud service (Supabase) for both database management and file storage.
 
