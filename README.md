@@ -19,8 +19,6 @@
   ## [Live Demo](https://mizakson-file-uploader.netlify.app/)
   ![alt text](path/to/img/here "Home page image preview")
 
-  (Note: The live demo may experience a brief "cold start" due to hosting on a free service tier.)
-
 ## Features
   * __User Authentication__: Secure, JWT-based authentication using Passport.js with a local strategy.
 
