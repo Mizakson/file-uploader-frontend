@@ -119,9 +119,11 @@ function Profile() {
 
     }
 
+    console.log(user)
+
     return (
         <div className="profile-page-container">
-            <h1>Hello {user.name}</h1>
+            <h1>Hello {user.username}</h1>
             <button type="submit" onClick={handleLogout}>Logout</button>
 
             {error && <p className="error-message">{error}</p>}

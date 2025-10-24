@@ -1,5 +1,6 @@
 :root {
     font-family: 'Lexend Deca', Verdana, Geneva, Tahoma, sans-serif;
+    min-width: 320px;
 }
 
 /* general rules */
@@ -113,4 +114,35 @@ input {
     align-items: center;
     gap: 3vh;
     font-size: 1rem;
+}
+
+
+/* profile */
+.profile-page-container,
+.folders-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.folders-display {
+    gap: 2vh;
+}
+
+.create-folder {
+    margin-bottom: 4vh;
+}
+
+.folder-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-bottom: 2vh;
+    align-items: center;
+    gap: 2vw;
+}
+
+.folder-btns {
+    display: flex;
+    gap: .75vw;
 }
