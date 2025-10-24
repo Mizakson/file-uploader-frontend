@@ -75,6 +75,18 @@ input {
 }
 
 
+/* error-page */
+.error-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.error-page-container>a:hover {
+    color: blue;
+}
+
 /* signup */
 .sign-up-container {
     display: flex;
