@@ -155,8 +155,9 @@ function FolderDetails() {
 
     return (
         <div className="folder-details-container">
-
-            {loading && <p>Loading folder details...</p>}
+            <div className="loading-container">
+                {loading && <p>Loading folder details...</p>}
+            </div>
 
             {!loading && (
                 <>

@@ -8,8 +8,8 @@ const AppRouter = () => {
 
     if (loading) {
         return (
-            <div style={{ padding: '50px', textAlign: 'center' }}>
-                Checking User Session...
+            <div className='loading-container'>
+                <p className="loading-text">Checking session...</p>
             </div>
         )
     }

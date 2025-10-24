@@ -14,7 +14,9 @@ function Homepage() {
     }, [user, loading, navigate])
 
     if (loading) {
-        return <div className='homepage-container'>Checking session...</div>
+        return <div className='homepage-container'>
+            <div className="loading-container"><p className="loading-text">Checking session...</p></div>
+        </div>
     }
     return (
         <div className='homepage-container'>
