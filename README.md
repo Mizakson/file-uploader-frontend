@@ -1,4 +1,4 @@
-## file-uploader
+## file-uploader-frontend
 
 ## Odin Project NodeJS Course Project #5
 
