@@ -10,6 +10,7 @@ const AppRouter = () => {
         return (
             <div className='loading-container'>
                 <p className="loading-text">Checking session...</p>
+                <p>Session check may take up to 50 seconds due to cold start from backend service</p>
             </div>
         )
     }
