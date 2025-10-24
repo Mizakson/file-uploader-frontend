@@ -17,7 +17,9 @@
   A multi-page PERN full-stack application built as part of The Odin Project's NodeJS course. It features JWT-based authentication, allows users to perform CRUD operations and utilizes a cloud-based storage solution for all user data.
 
   ## [Live Demo](https://mizakson-file-uploader.netlify.app/)
-  ![alt text](path/to/img/here "Home page image preview")
+  ![alt text](./public/file-uploader-profile-page.png "Profile page image preview")
+  ![alt text](./public/file-uploader-folder-details-page.png "Folder details page image preview")
+  ![alt text](./public/file-uploader-file-details-page.png "File details page image preview")
 
 ## Features
   * __User Authentication__: Secure, JWT-based authentication using Passport.js with a local strategy.
