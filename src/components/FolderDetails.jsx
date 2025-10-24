@@ -161,7 +161,7 @@ function FolderDetails() {
 
             {!loading && (
                 <>
-                    <div className="folder-details-top"><h1>Folder {folder}</h1>
+                    <div className="folder-details-top"><h1>Folder - {folder}</h1>
                         <div className="folder-details-top-btns"><button><Link to="/">Back to Profile</Link></button>
                             <button>
                                 <Link to={`/upload-file/${folderId}`}>Upload File</Link>

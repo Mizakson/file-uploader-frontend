@@ -138,7 +138,7 @@ function FileDetails() {
                         <>
                             {fileData ? (
                                 <>
-                                    <h1>File Details</h1>
+                                    <h1 id='file-details-title-text'>File Details</h1>
                                     <div className="file-details-display">
                                         <p className="file-details-text"><span className="font-semibold text-gray-600">Name:</span> {fileData.name}</p>
                                         <p className="file-details-text"><span className="font-semibold text-gray-600">Size:</span> {formattedSize}</p>
@@ -154,7 +154,7 @@ function FileDetails() {
                                     </div>
                                 </>
                             ) : (
-                                <div className="text-center p-6">
+                                <div className="error-container">
                                     <h1 className="error-text">File Not Found</h1>
                                     <Link to={`/folder/${folderId}`}>
                                         Go back to Folder
