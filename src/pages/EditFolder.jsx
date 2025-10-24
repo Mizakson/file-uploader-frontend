@@ -104,7 +104,7 @@ function EditFolder() {
                     <p className="error-msg" style={{ color: "red" }}>{error}</p>
                 )}
                 <div className="fields">
-                    <fieldset>
+                    <fieldset id="edit-folder-input">
                         <label htmlFor="newName">Folder Name: </label>
                         <input
                             type="text"

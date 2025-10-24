@@ -177,3 +177,16 @@ input {
 #add-folder-input {
     padding-bottom: 6vh;
 }
+
+
+/* edit-folder */
+.edit-folder-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+#edit-folder-input {
+    padding-bottom: 6vh;
+}
