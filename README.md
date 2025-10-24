@@ -139,6 +139,8 @@
 
   The frontend will be running at `http://localhost:5173`
 
+  Now you will be able to access and use the application in a development setting after going to the frontend.
+
   ## Testing
   To run the frontend test suite, run the following command(s)
   ``` bash 
